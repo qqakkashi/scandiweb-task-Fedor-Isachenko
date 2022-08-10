@@ -1,0 +1,67 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap");
+header {
+  display: flex;
+  position: fixed;
+  padding-top: 29px;
+  max-width: 1440px;
+  background-color: #ffffff;
+  width: 100%;
+  top: 0;
+  flex-direction: row;
+  z-index: 2;
+}
+header nav {
+  width: 240px;
+  margin-left: 120px;
+}
+header nav ul {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  margin: 0;
+  padding: 0;
+}
+header nav ul li {
+  list-style-type: none;
+}
+header nav ul li a {
+  text-decoration: none;
+}
+header .currency_change {
+  cursor: pointer;
+  margin-left: 500px;
+  display: flex;
+  width: 100%;
+  max-width: 40px;
+  justify-content: space-around;
+  font-weight: 500;
+}
+header .currency_menu {
+  cursor: pointer;
+  position: fixed;
+  z-index: 3;
+  top: 80px;
+  left: 1490px;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+}
+header .currency_menu li {
+  list-style-type: none;
+  padding: 20px;
+  font-weight: 500;
+}
+header .currency_menu li:hover {
+  background-color: #eeeeee;
+}
+
+.currency_menu_background {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+}/*# sourceMappingURL=header.css.map */
