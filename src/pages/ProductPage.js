@@ -3,6 +3,10 @@ import "../styles/global.css";
 
 export default class ProductPage extends Component {
   render() {
-    return <div>ProductPage</div>;
+    return (
+      <main>
+        <div>ProductPage</div>
+      </main>
+    );
   }
 }
