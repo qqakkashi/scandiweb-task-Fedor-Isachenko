@@ -35,8 +35,6 @@ export class CategoryPage extends PureComponent {
   }
 
   render() {
-    console.log(this.state.category, " category");
-    console.log(this.state.products, " products");
     return (
       <main>
         <h1>{this.state.category}</h1>
@@ -45,16 +43,26 @@ export class CategoryPage extends PureComponent {
             return (
               <li key={products.id}>
                 <Link to={`/product/${products.id}`} key={products.prices}>
-                  <img
-                    src={products.gallery[0]}
-                    alt={products.gallery[0]}
-                  ></img>
-                  <h3>
+                  <div className="gallery-block">
+                    <img
+                      src={products.gallery[0]}
+                      alt={products.gallery[0]}
+                    ></img>
+                    {!products.inStock && (
+                      <div className="overlay">
+                        <h1>out of stock</h1>
+                      </div>
+                    )}
+                  </div>
+
+                  <h3 style={{ opacity: `${!products.inStock ? "0.5" : "1"}` }}>
                     {products.brand} {products.name}
                   </h3>
-                  <CategoryPrice prices={products.prices} />
+                  <CategoryPrice
+                    prices={products.prices}
+                    inStock={products.inStock}
+                  />
                 </Link>
-                ,
               </li>
             );
           })}

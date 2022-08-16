@@ -7,25 +7,61 @@
   margin: 0 auto;
   align-content: baseline;
   justify-content: center;
-  a {
-    text-decoration: none;
+
+  li:hover {
+    box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
   }
   li {
     margin: 0;
     width: 350px;
     height: 450px;
+    padding: 16px;
     list-style-type: none;
     align-items: center;
     overflow: hidden;
-
-    img {
-      position: relative;
-      max-width: 100%;
-      max-height: 100%;
-      height: 330px;
-      display: flex;
-      margin: 0 auto;
-      padding: 16px;
+    z-index: 1;
+    a {
+      width: 100%;
+      height: 100%;
+      text-decoration: none;
+      .gallery-block {
+        display: flex;
+        position: relative;
+        width: 100%;
+        height: 330px;
+        img {
+          max-width: 100%;
+          max-height: 100%;
+          height: 330px;
+          margin: 0 auto;
+        }
+        .overlay {
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+          background: #ffffff;
+          opacity: 0.5;
+          margin: 0px;
+          padding: 0px;
+          z-index: 2;
+          h1 {
+            display: flex;
+            margin: 0 auto;
+            justify-content: center;
+            color: #8d8f9a;
+            font-family: "Raleway";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+          }
+        }
+      }
     }
   }
 }

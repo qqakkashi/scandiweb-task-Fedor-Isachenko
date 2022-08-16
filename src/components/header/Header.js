@@ -16,7 +16,6 @@ export class Header extends PureComponent {
       categories: [],
       currencies: [],
       currenciesMenuIsOpen: false,
-      location: "",
     };
   }
 
