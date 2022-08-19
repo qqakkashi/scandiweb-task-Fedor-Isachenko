@@ -44,7 +44,7 @@ export class MiniCart extends Component {
     return (
       <div className="header-cart">
         <div className="mini-cart-items-count">
-          <div className="count-icon">
+          <div className="count-icon" onClick={() => this.miniCartMenu()}>
             <p>{countOfItems}</p>
           </div>
 
@@ -102,9 +102,11 @@ export class MiniCart extends Component {
                 </span>
               </h4>
               <div className="mini-cart-buttons">
-                <button className="bag" onClick={() => this.miniCartMenu()}>
-                  <Link to="cart">View bag</Link>
-                </button>
+                <Link to="cart">
+                  <button className="bag" onClick={() => this.miniCartMenu()}>
+                    View bag
+                  </button>
+                </Link>
                 <button className="check">CHECK OUT</button>
               </div>
             </div>
