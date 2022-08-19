@@ -6,6 +6,7 @@ import withRouter from "../components/withRouter";
 import "../styles/category.css";
 import { Link } from "react-router-dom";
 import CategoryPrice from "../components/category/CategoryPrice";
+import circleIcon from "../images/circle-icon.svg";
 
 export class CategoryPage extends PureComponent {
   constructor(props) {
@@ -63,6 +64,13 @@ export class CategoryPage extends PureComponent {
                     inStock={products.inStock}
                   />
                 </Link>
+                {products.inStock && (
+                  <img
+                    src={circleIcon}
+                    alt="circle-icon"
+                    className="circle-icon"
+                  ></img>
+                )}
               </li>
             );
           })}

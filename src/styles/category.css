@@ -11,7 +11,14 @@
 .items_list li:hover {
   box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
 }
+.items_list li:hover .circle-icon {
+  position: absolute;
+  display: flex;
+  top: 310px;
+  left: 270px;
+}
 .items_list li {
+  position: relative;
   margin: 0;
   width: 350px;
   height: 450px;
@@ -63,6 +70,9 @@
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
+}
+.items_list li .circle-icon {
+  display: none;
 }
 
 main h1 {

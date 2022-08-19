@@ -30,7 +30,7 @@ header nav ul li a {
   text-transform: uppercase;
   padding: 0px 16px 30px 16px;
 }
-header .currency_change {
+header .currency-change {
   position: relative;
   cursor: pointer;
   margin-left: 500px;
@@ -40,10 +40,10 @@ header .currency_change {
   justify-content: space-around;
   font-weight: 500;
 }
-header .currency_menu {
+header .currency-menu {
   cursor: pointer;
   position: fixed;
-  z-index: 3;
+  z-index: 5;
   top: 65px;
   display: flex;
   flex-direction: column;
@@ -52,20 +52,191 @@ header .currency_menu {
   box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
   background-color: #ffffff;
 }
-header .currency_menu li {
+header .currency-menu li {
   list-style-type: none;
   padding: 20px;
   font-weight: 500;
 }
-header .currency_menu li:hover {
+header .currency-menu li:hover {
   background-color: #eeeeee;
 }
+header .header-cart {
+  position: relative;
+}
+header .header-cart .mini-cart-items-count {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+}
+header .header-cart .mini-cart-items-count .count-icon {
+  position: absolute;
+  top: -10px;
+  left: 32px;
+  width: 20px;
+  height: 20px;
+  background: #1d1f22;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+header .header-cart .mini-cart-items-count .count-icon p {
+  color: #ffffff;
+  margin-top: 3px;
+  margin-left: 0px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+}
+header .header-cart .mini-cart {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 325px;
+  height: 600px;
+  z-index: 4;
+  top: 50px;
+  left: -250px;
+  background-color: #ffffff;
+  padding: 32px 16px;
+}
+header .header-cart .mini-cart h3 {
+  max-height: 20px;
+  display: flex;
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 160%;
+  margin: 0;
+  padding-bottom: 32px;
+  color: #1d1f22;
+}
+header .header-cart .mini-cart h4 {
+  display: flex;
+  justify-content: space-between;
+}
+header .header-cart .mini-cart .mini-cart-items {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 450px;
+}
+header .header-cart .mini-cart .mini-cart-items .mini-cart-info {
+  display: flex;
+  flex-direction: row;
+  padding: 40px 2px;
+  justify-content: space-between;
+}
+header .header-cart .mini-cart .mini-cart-items .mini-cart-info .mini-cart-attributes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+header .header-cart .mini-cart .mini-cart-items .mini-cart-info .mini-cart-counter-gallery {
+  display: flex;
+  flex-direction: column;
+}
+header .header-cart .mini-cart .mini-cart-items .mini-cart-info .product-selected-attributes {
+  display: flex;
+}
+header .header-cart .mini-cart .mini-cart-items .mini-cart-info button {
+  margin-right: 8px;
+}
+header .header-cart .mini-cart .mini-cart-items .mini-cart-info p {
+  margin: 0px;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 160%;
+}
+header .header-cart .mini-cart .mini-cart-items .mini-cart-info h4 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 160%;
+}
+header .header-cart .mini-cart .mini-cart-items .mini-cart-info .mini-cart-counter-gallery {
+  display: flex;
+  flex-direction: row;
+}
+header .header-cart .mini-cart .mini-cart-items .mini-cart-info .mini-cart-counter-gallery .counter {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 20px;
+  align-items: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 160%;
+}
+header .header-cart .mini-cart .mini-cart-items .mini-cart-info .mini-cart-counter-gallery .counter img {
+  width: 24px;
+  height: 24px;
+}
+header .header-cart .mini-cart .mini-cart-items .mini-cart-info .mini-cart-counter-gallery .gallery {
+  width: 120px;
+  height: 190px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-left: 20px;
+}
+header .header-cart .mini-cart .mini-cart-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+header .header-cart .mini-cart .mini-cart-buttons .bag {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 32px;
+  width: 150px;
+  height: 43px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 120%;
+  text-transform: uppercase;
+  background: #ffffff;
+  border: 1px solid #1d1f22;
+}
+header .header-cart .mini-cart .mini-cart-buttons .check {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 32px;
+  width: 150px;
+  height: 43px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 120%;
+  border: 0;
+  background: #5ece7b;
+  color: #ffffff;
+}
+header .header-cart .mini-cart-background {
+  z-index: 3;
+  position: fixed;
+  top: 80px;
+  right: 0px;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(57, 55, 72, 0.22);
+}
 
-.currency_menu_background {
+.currency-menu-background {
   position: fixed;
   top: 0px;
   right: 0px;
   width: 100vw;
   height: 100vh;
-  z-index: 2;
+  z-index: 3;
+}
+
+.mini-cart-items::-webkit-scrollbar {
+  width: 0;
 }/*# sourceMappingURL=header.css.map */

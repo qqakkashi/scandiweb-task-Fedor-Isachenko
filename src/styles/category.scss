@@ -10,8 +10,15 @@
 
   li:hover {
     box-shadow: 0px 4px 35px rgba(168, 172, 176, 0.19);
+    .circle-icon {
+      position: absolute;
+      display: flex;
+      top: 310px;
+      left: 270px;
+    }
   }
   li {
+    position: relative;
     margin: 0;
     width: 350px;
     height: 450px;
@@ -62,6 +69,9 @@
           }
         }
       }
+    }
+    .circle-icon {
+      display: none;
     }
   }
 }

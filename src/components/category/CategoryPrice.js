@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { setCurrency } from "../../store/cartSlice";
 
 const mapStateToProps = (state) => ({
-  currentCurrency: state.currency.currency,
+  currentCurrency: state.cart.currency,
 });
 
 class CategoryPrice extends Component {

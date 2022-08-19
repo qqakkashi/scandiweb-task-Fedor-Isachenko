@@ -5,10 +5,11 @@ import withRouter from "../components/withRouter";
 import { GET_PRODUCT } from "../queries/queries";
 import "../styles/product.css";
 import { connect } from "react-redux";
-import { setCurrency } from "../store/cartSlice";
+import { setCurrency, addProductToCart } from "../store/cartSlice";
 
 const mapStateToProps = (state) => ({
-  currentCurrency: state.currency.currency,
+  currentCurrency: state.cart.currency,
+  products: state.cart.products,
 });
 
 export class ProductPage extends Component {
@@ -20,22 +21,77 @@ export class ProductPage extends Component {
       currentAttributes: [],
     };
   }
+  addToCart() {
+    const currentProduct = [...this.props.products];
+    const currentAttributes = [];
+    let skip = 0;
+    this.state.product.attributes.forEach((attribute) => {
+      this.state.currentAttributes.forEach((currentAttribute) => {
+        if (attribute.name === currentAttribute.name) {
+          currentAttributes.push({
+            name: currentAttribute.name,
+            value: currentAttribute.value,
+          });
+        }
+      });
+    });
+    if (
+      this.state.currentAttributes.length ===
+      this.state.product.attributes.length
+    ) {
+      currentProduct.some((product) => product.id === this.state.product.id)
+        ? currentProduct.forEach((product, index) => {
+            if (
+              JSON.stringify(product.attributes) ===
+              JSON.stringify(currentAttributes)
+            ) {
+              currentProduct.splice(index, 1, {
+                ...currentProduct[index],
+                numberOfUnits: currentProduct[index].numberOfUnits + 1,
+              });
+            } else {
+              skip++;
+            }
+          })
+        : currentProduct.push({
+            id: this.state.product.id,
+            brand: this.state.product.brand,
+            name: this.state.product.name,
+            allAttributes: this.state.product.attributes,
+            attributes: currentAttributes,
+            gallery: this.state.product.gallery,
+            prices: this.state.product.prices,
+            numberOfUnits: 1,
+          });
+    }
+    skip === currentProduct.length &&
+      currentProduct.push({
+        id: this.state.product.id,
+        brand: this.state.product.brand,
+        name: this.state.product.name,
+        allAttributes: this.state.product.attributes,
+        attributes: currentAttributes,
+        gallery: this.state.product.gallery,
+        prices: this.state.product.prices,
+        numberOfUnits: 1,
+      });
+    this.props.addProductToCart(currentProduct);
+  }
   setAttributes = (name, value) => {
     const currentAttributes = [...this.state.currentAttributes];
-    console.log(name, value);
     currentAttributes.length !== 0
-      ? currentAttributes.some((item) => item.key === name)
+      ? currentAttributes.some((item) => item.name === name)
         ? currentAttributes.forEach((currentAttribute, index) => {
-            currentAttribute?.key === name && currentAttribute.value === value
+            currentAttribute?.name === name && currentAttribute.value === value
               ? currentAttributes.splice(index, 1)
-              : currentAttributes[index]?.key === name &&
+              : currentAttributes[index]?.name === name &&
                 currentAttributes.splice(index, 1, {
-                  key: name,
+                  name: name,
                   value: value,
                 });
           })
-        : currentAttributes.push({ key: name, value: value })
-      : currentAttributes.push({ key: name, value: value });
+        : currentAttributes.push({ name: name, value: value })
+      : currentAttributes.push({ name: name, value: value });
     this.setState({ currentAttributes: currentAttributes });
   };
 
@@ -53,9 +109,6 @@ export class ProductPage extends Component {
         : null,
     });
   }
-  setGallery() {
-    this.setState({ gallery: this.state.product?.gallery[0] });
-  }
   componentDidMount() {
     this.fetchQuery();
   }
@@ -72,8 +125,6 @@ export class ProductPage extends Component {
     const attributes = this.state.product?.attributes?.map((attribute) => {
       return attribute;
     });
-    console.log(this.state.currentAttributes);
-
     return (
       <main
         className="main"
@@ -120,10 +171,24 @@ export class ProductPage extends Component {
                           <button
                             key={item.value}
                             value={item.value}
-                            style={{
-                              backgroundColor: `${item.value}`,
-                              border: "1px solid #1D1F22",
-                            }}
+                            style={
+                              Boolean(
+                                this.state.currentAttributes.find(
+                                  (attributes) =>
+                                    attributes.value === item.value &&
+                                    attributes.name === attribute.name
+                                )
+                              ) && this.state.product?.inStock
+                                ? {
+                                    backgroundColor: `${item.value}`,
+                                    outline: "1px solid #5ECE7B",
+                                    outlineOffset: 2,
+                                  }
+                                : {
+                                    backgroundColor: `${item.value}`,
+                                    outline: "1px solid #1D1F22",
+                                  }
+                            }
                             onClick={(e) =>
                               this.setAttributes(attribute.name, e.target.value)
                             }
@@ -132,7 +197,23 @@ export class ProductPage extends Component {
                           <button
                             key={item.value}
                             value={item.value}
-                            style={{ backgroundColor: `${item.value}` }}
+                            style={
+                              Boolean(
+                                this.state.currentAttributes.find(
+                                  (currentAttribute) =>
+                                    currentAttribute.value === item.value &&
+                                    currentAttribute.name === attribute.name
+                                )
+                              ) && this.state.product?.inStock
+                                ? {
+                                    backgroundColor: `${item.value}`,
+                                    outline: "1px solid #5ECE7B",
+                                    outlineOffset: 2,
+                                  }
+                                : {
+                                    backgroundColor: `${item.value}`,
+                                  }
+                            }
                             onClick={(e) =>
                               this.setAttributes(attribute.name, e.target.value)
                             }
@@ -142,11 +223,27 @@ export class ProductPage extends Component {
                         <button
                           key={item.value}
                           value={item.value}
-                          style={{
-                            border: "1px solid #1D1F22",
-                            width: 63,
-                            height: 43,
-                          }}
+                          style={
+                            Boolean(
+                              this.state.currentAttributes.find(
+                                (currentAttribute) =>
+                                  currentAttribute.value === item.value &&
+                                  currentAttribute.name === attribute.name
+                              ) && this.state.product?.inStock
+                            )
+                              ? {
+                                  border: "1px solid #1D1F22",
+                                  width: 65,
+                                  height: 45,
+                                  backgroundColor: "#1D1F22",
+                                  color: "#ffffff",
+                                }
+                              : {
+                                  border: "1px solid #1D1F22",
+                                  width: 65,
+                                  height: 45,
+                                }
+                          }
                           onClick={(e) =>
                             this.setAttributes(attribute.name, e.target.value)
                           }
@@ -160,7 +257,17 @@ export class ProductPage extends Component {
               );
             })}
           </div>
-
+          <button
+            className="add-to-cart"
+            style={
+              this.state.product?.inStock
+                ? { cursor: "pointer" }
+                : { cursor: "default" }
+            }
+            onClick={() => this.state.product?.inStock && this.addToCart()}
+          >
+            ADD TO CART
+          </button>
           <div
             className="description"
             dangerouslySetInnerHTML={{ __html: this.state.product.description }}
@@ -171,6 +278,6 @@ export class ProductPage extends Component {
   }
 }
 
-export default connect(mapStateToProps, { setCurrency })(
+export default connect(mapStateToProps, { setCurrency, addProductToCart })(
   withRouter(ProductPage)
 );

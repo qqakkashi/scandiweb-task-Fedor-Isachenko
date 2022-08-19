@@ -17,4 +17,9 @@ main {
   display: flex;
   flex-direction: column;
   margin-top: 80px;
+}
+
+a {
+  padding: 0;
+  text-decoration: none;
 }/*# sourceMappingURL=global.css.map */

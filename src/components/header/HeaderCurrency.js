@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { client } from "../../index";
 import { GET_CATEGOIES_AND_CURRENCIES } from "../../queries/queries";
 import arrow_down from "../../images/arrow-down.svg";
-import arrow_up from "../../images/arrow-up.svg";
 import { connect } from "react-redux";
 import { setCurrency } from "../../store/cartSlice";
 
 const mapStateToProps = (state) => ({
-  currency: state.currency.currency,
+  currency: state.cart.currency,
 });
 
 class HeaderCurrency extends Component {
@@ -15,7 +14,6 @@ class HeaderCurrency extends Component {
     super(props);
     this.state = {
       currencies: [],
-      currency: "",
       currenciesMenuIsOpen: false,
       location: "",
     };
@@ -26,7 +24,6 @@ class HeaderCurrency extends Component {
   }
 
   changeCurrensy = (event) => {
-    this.setState({ currency: event.target.firstChild.data });
     this.props.setCurrency(event.target.firstChild.data);
     this.setState({
       currenciesMenuIsOpen: !this.state.currenciesMenuIsOpen,
@@ -46,7 +43,7 @@ class HeaderCurrency extends Component {
     return (
       <>
         <div
-          className="currency_change"
+          className="currency-change"
           onClick={() =>
             this.setState({
               currenciesMenuIsOpen: !this.state.currenciesMenuIsOpen,
@@ -55,20 +52,25 @@ class HeaderCurrency extends Component {
         >
           <p>{this.props?.currency}</p>
           <img
-            src={this.state.currenciesMenuIsOpen ? arrow_up : arrow_down}
+            src={arrow_down}
             alt={this.state.currenciesMenuIsOpen ? "arrow up" : "arrow down"}
+            style={
+              this.state.currenciesMenuIsOpen
+                ? { transform: "rotate(180deg)" }
+                : null
+            }
           />
           {this.state.currenciesMenuIsOpen && (
             <>
               <div
-                className="currency_menu_background"
+                className="currency-menu-background"
                 onClick={() =>
                   this.setState({
                     currenciesMenuIsOpen: !this.state.currenciesMenuIsOpen,
                   })
                 }
               ></div>
-              <ul className="currency_menu">
+              <ul className="currency-menu">
                 {this.state.currencies.map((index) => {
                   return (
                     <li key={index.symbol} onClick={this.changeCurrensy}>

@@ -5,9 +5,9 @@ import logo_icon from "../../images/logo-icon.svg";
 import "../../styles/header.css";
 import "../../styles/global.css";
 
-import empty_cart from "../../images/empty-cart.svg";
 import HeaderNavigation from "./HeaderNavigation";
 import HeaderCurrency from "./HeaderCurrency";
+import MiniCart from "../cart/MiniCart";
 
 export class Header extends PureComponent {
   constructor(props) {
@@ -39,7 +39,7 @@ export class Header extends PureComponent {
         <HeaderNavigation />
         <img style={{ marginLeft: "350px" }} src={logo_icon} alt="logo"></img>
         <HeaderCurrency />
-        <img style={{ marginLeft: "20px" }} src={empty_cart} alt="empty-cart" />
+        <MiniCart />
       </header>
     );
   }
