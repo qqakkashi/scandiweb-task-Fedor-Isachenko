@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { setCurrency } from "../../store/cartSlice";
+import { Text } from "./categoryprice.styled";
 
 const mapStateToProps = (state) => ({
   currentCurrency: state.cart.currency,
@@ -18,10 +19,10 @@ class CategoryPrice extends Component {
       ""
     );
     return (
-      <p style={{ opacity: `${!this.props.inStock ? "0.5" : "1"}` }}>
+      <Text inStock={this.props?.inStock}>
         {this.props.currentCurrency}
         {currentAmount}
-      </p>
+      </Text>
     );
   }
 }

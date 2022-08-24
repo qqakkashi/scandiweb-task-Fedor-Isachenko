@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import minus_square from "../../images/minus-square.svg";
-import plus_square from "../../images/plus-square.svg";
+import minus_square from "../images/minus-square.svg";
+import plus_square from "../images/plus-square.svg";
 import { addProductToCart } from "../../store/cartSlice";
 
 const mapStateToProps = (state) => ({

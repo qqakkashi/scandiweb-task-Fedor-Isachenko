@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { client } from "../../index";
 import { GET_CATEGOIES_AND_CURRENCIES } from "../../queries/queries";
-import arrow_down from "../../images/arrow-down.svg";
+import arrow_down from "../images/arrow-down.svg";
 import { connect } from "react-redux";
 import { setCurrency } from "../../store/cartSlice";
+import { Arrow } from "./headercurrency.styled";
 
 const mapStateToProps = (state) => ({
   currency: state.cart.currency,
@@ -51,14 +52,10 @@ class HeaderCurrency extends Component {
           }
         >
           <p>{this.props?.currency}</p>
-          <img
+          <Arrow
             src={arrow_down}
             alt={this.state.currenciesMenuIsOpen ? "arrow up" : "arrow down"}
-            style={
-              this.state.currenciesMenuIsOpen
-                ? { transform: "rotate(180deg)" }
-                : null
-            }
+            open={this.state.currenciesMenuIsOpen}
           />
           {this.state.currenciesMenuIsOpen && (
             <>

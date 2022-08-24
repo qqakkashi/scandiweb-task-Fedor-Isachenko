@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import minus_square from "../../images/minus-square.svg";
-import plus_square from "../../images/plus-square.svg";
+import minus_square from "../images/minus-square.svg";
+import plus_square from "../images/plus-square.svg";
 import { connect } from "react-redux";
 import { addProductToCart } from "../../store/cartSlice";
+import { Button, ButtonColor } from "../cart/minicart.styled";
 
 const mapStateToProps = (state) => ({
   currentCurrency: state.cart.currency,
@@ -37,7 +38,6 @@ export class MiniCartProducts extends Component {
             JSON.stringify(product.attributes) ===
             JSON.stringify(this.props.attributes)
           ) {
-            console.log(product.attributes, this.props.attributes);
             action === "+"
               ? currentProduct.splice(index, 1, {
                   ...currentProduct[index],
@@ -65,99 +65,36 @@ export class MiniCartProducts extends Component {
               {this.currentAmount(this.props?.prices, this.state.numberOfUnits)}
             </h4>
             <div>
-              {this.props?.allAttributes?.map((attribute, index) => {
-                return (
-                  <div key={Math.random() * index}>
-                    <p>{attribute.name}:</p>
-                    {attribute.items.map((item) => {
-                      return item.value.includes("#") ? (
-                        item.value.includes("#FFFFFF") ? (
-                          <button
+              {this.props?.allAttributes.length !== 0 &&
+                this.props?.allAttributes?.map((attribute, index) => {
+                  return (
+                    <div key={Math.random() * index}>
+                      <p>{attribute.name}:</p>
+                      {attribute.items.map((item) => {
+                        return item.value.includes("#") ? (
+                          <ButtonColor
                             key={Math.random()}
-                            style={
-                              this.props?.attributes[index].name ===
-                                attribute.name &&
-                              this.props?.attributes[index].value === item.value
-                                ? {
-                                    backgroundColor: `${item.value}`,
-                                    border: 0,
-                                    width: 16,
-                                    height: 16,
-                                    outline: "2px solid #5ECE7B",
-                                    outlineOffset: "2px",
-                                  }
-                                : {
-                                    backgroundColor: `${item.value}`,
-                                    border: 0,
-                                    outline: "1px solid #1D1F22",
-                                    width: 16,
-                                    height: 16,
-                                  }
-                            }
-                          ></button>
+                            currentName={this.props?.attributes[index].name}
+                            currentValue={this.props?.attributes[index].value}
+                            name={attribute.name}
+                            value={item.value}
+                          ></ButtonColor>
                         ) : (
-                          <button
+                          <Button
+                            currentName={this.props?.attributes[index].name}
+                            currentValue={this.props?.attributes[index].value}
+                            name={attribute.name}
+                            value={item.value}
                             key={Math.random()}
-                            style={
-                              this.props?.attributes[index].name ===
-                                attribute.name &&
-                              this.props?.attributes[index].value === item.value
-                                ? {
-                                    backgroundColor: `${item.value}`,
-                                    border: 0,
-                                    width: 16,
-                                    height: 16,
-                                    outline: "2px solid #5ECE7B",
-                                    outlineOffset: "2px",
-                                  }
-                                : {
-                                    backgroundColor: `${item.value}`,
-                                    border: 0,
-                                    width: 16,
-                                    height: 16,
-                                  }
-                            }
-                          ></button>
-                        )
-                      ) : (
-                        <button
-                          key={Math.random()}
-                          style={
-                            this.props?.attributes[index].name ===
-                              attribute.name &&
-                            this.props?.attributes[index].value === item.value
-                              ? {
-                                  backgroundColor: "#1D1F22",
-                                  color: "#FFFFFF",
-                                  outline: "1px solid #1D1F22",
-                                  border: 0,
-                                  width: `${
-                                    item.value.length >= 4 ? "40px" : "24px"
-                                  }`,
-                                  height: 24,
-                                  padding: 0,
-                                  fontFamily: "Source Sans Pro",
-                                }
-                              : {
-                                  backgroundColor: "#ffffff",
-                                  outline: "1px solid #1D1F22",
-                                  border: 0,
-                                  width: `${
-                                    item.value.length >= 4 ? "40px" : "24px"
-                                  }`,
-                                  height: 24,
-                                  padding: 0,
-                                  fontFamily: "Source Sans Pro",
-                                }
-                          }
-                        >
-                          {item.value}
-                        </button>
-                      );
-                    })}
-                  </div>
-                );
-              })}
+                            length={item.value.length}
+                          >
+                            {item.value}
+                          </Button>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
             </div>
           </div>
           <div className="mini-cart-counter-gallery">

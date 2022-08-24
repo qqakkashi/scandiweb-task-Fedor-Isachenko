@@ -113,36 +113,8 @@
   flex-direction: row;
   justify-content: flex-start;
 }
-.main .product-info .item-attributes .attribute-buttons button {
-  cursor: pointer;
-  min-width: 32px;
-  min-height: 32px;
-  border: 0;
-  padding: 10px;
-  margin-right: 12px;
-  background-color: #ffffff;
-  font-family: "Source Sans Pro";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 18px;
-}
-.main .product-info .add-to-cart {
-  margin: 20px 0px 40px 0px;
-  min-width: 300px;
-  padding: 16px 32px;
-  cursor: pointer;
-  font-family: "Raleway";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 120%;
-  background: #5ece7b;
-  border: 0;
-  color: #ffffff;
-}
 .main .product-info .description {
-  height: 600px;
+  max-height: 600px;
   overflow: auto;
   font-family: "Roboto";
   font-style: normal;

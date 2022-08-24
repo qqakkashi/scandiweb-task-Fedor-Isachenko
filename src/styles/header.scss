@@ -11,6 +11,9 @@ header {
   flex-direction: row;
   align-items: center;
   z-index: 2;
+  .logo {
+    margin-left: 350px;
+  }
   nav {
     width: 240px;
     margin-left: 120px;
@@ -62,6 +65,7 @@ header {
   }
   .header-cart {
     position: relative;
+    margin-left: 20px;
     .mini-cart-items-count {
       cursor: pointer;
       position: relative;
@@ -69,7 +73,7 @@ header {
       .count-icon {
         position: absolute;
         top: -10px;
-        left: 32px;
+        left: 12px;
         width: 20px;
         height: 20px;
         background: #1d1f22;
@@ -94,7 +98,7 @@ header {
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
-      width: 325px;
+      width: 350px;
       height: 600px;
       z-index: 4;
       top: 50px;
@@ -131,7 +135,8 @@ header {
           .mini-cart-attributes {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
+            padding: 0px 0px 0px 5px;
           }
           .mini-cart-counter-gallery {
             display: flex;
@@ -144,7 +149,7 @@ header {
             margin-right: 8px;
           }
           p {
-            margin: 0px;
+            margin: 3px 0px;
             font-weight: 300;
             font-size: 16px;
             line-height: 160%;

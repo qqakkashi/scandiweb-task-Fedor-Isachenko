@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import QuantityCart from "../components/cart/QuantityCart";
 import "../styles/cart.css";
 import GalleryCart from "../components/cart/GalleryCart";
+import { ButtonColor, Button } from "../components/cart/cart.styled";
 
 const mapStateToProps = (state) => ({
   currentCurrency: state.cart.currency,
@@ -58,102 +59,36 @@ export class CartPage extends Component {
                       <div className="product-attributes">
                         {product.allAttributes?.map((attribute, index) => {
                           return (
-                            <div
-                              key={Math.random()}
-                              style={{
-                                display: "flex",
-                                flexDirection: "column",
-                              }}
-                            >
+                            <div key={Math.random()}>
                               <p>{attribute.name}:</p>
                               <div>
                                 {attribute.items.map((item) => {
                                   return item.value.includes("#") ? (
-                                    item.value.includes("#FFFFFF") ? (
-                                      <button
-                                        key={Math.random()}
-                                        style={
-                                          product.attributes[index].name ===
-                                            attribute.name &&
-                                          product.attributes[index].value ===
-                                            item.value
-                                            ? {
-                                                backgroundColor: `${item.value}`,
-                                                border: 0,
-                                                width: 32,
-                                                height: 32,
-                                                outline: "2px solid #5ECE7B",
-                                                outlineOffset: "2px",
-                                              }
-                                            : {
-                                                backgroundColor: `${item.value}`,
-                                                border: 0,
-                                                outline: "1px solid #1D1F22",
-                                                width: 32,
-                                                height: 32,
-                                              }
-                                        }
-                                      ></button>
-                                    ) : (
-                                      <button
-                                        key={Math.random()}
-                                        style={
-                                          product.attributes[index].name ===
-                                            attribute.name &&
-                                          product.attributes[index].value ===
-                                            item.value
-                                            ? {
-                                                backgroundColor: `${item.value}`,
-                                                border: 0,
-                                                width: 32,
-                                                height: 32,
-                                                outline: "2px solid #5ECE7B",
-                                                outlineOffset: "2px",
-                                                marginRight: 12,
-                                              }
-                                            : {
-                                                backgroundColor: `${item.value}`,
-                                                border: 0,
-                                                width: 32,
-                                                height: 32,
-                                                marginRight: 12,
-                                              }
-                                        }
-                                      ></button>
-                                    )
-                                  ) : (
-                                    <button
+                                    <ButtonColor
                                       key={Math.random()}
-                                      style={
-                                        product.attributes[index].name ===
-                                          attribute.name &&
-                                        product.attributes[index].value ===
-                                          item.value
-                                          ? {
-                                              backgroundColor: "#1D1F22",
-                                              color: "#FFFFFF",
-                                              outline: "1px solid #1D1F22",
-                                              border: 0,
-                                              width: 65,
-                                              height: 45,
-                                              padding: 0,
-                                              marginRight: 8,
-                                              fontFamily: "Source Sans Pro",
-                                            }
-                                          : {
-                                              backgroundColor: "#ffffff",
-                                              outline: "1px solid #1D1F22",
-                                              border: 0,
-                                              width: 65,
-                                              height: 45,
-                                              padding: 0,
-                                              marginRight: 8,
-                                              fontFamily: "Source Sans Pro",
-                                            }
+                                      value={item.value}
+                                      name={attribute.name}
+                                      currentName={
+                                        product.attributes[index].name
+                                      }
+                                      currentValue={
+                                        product.attributes[index].value
+                                      }
+                                    ></ButtonColor>
+                                  ) : (
+                                    <Button
+                                      key={Math.random()}
+                                      value={item.value}
+                                      name={attribute.name}
+                                      currentName={
+                                        product.attributes[index].name
+                                      }
+                                      currentValue={
+                                        product.attributes[index].value
                                       }
                                     >
                                       {item.value}
-                                    </button>
+                                    </Button>
                                   );
                                 })}
                               </div>

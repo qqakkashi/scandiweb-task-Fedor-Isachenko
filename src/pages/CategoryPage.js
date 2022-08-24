@@ -6,7 +6,15 @@ import withRouter from "../components/withRouter";
 import "../styles/category.css";
 import { Link } from "react-router-dom";
 import CategoryPrice from "../components/category/CategoryPrice";
-import circleIcon from "../images/circle-icon.svg";
+import circleIcon from "../components/images/circle-icon.svg";
+import { connect } from "react-redux";
+import { addProductToCart } from "../store/cartSlice";
+import { H3 } from "../components/category/categorypage.styled";
+
+const mapStateToProps = (state) => ({
+  currentCurrency: state.cart.currency,
+  products: state.cart.products,
+});
 
 export class CategoryPage extends PureComponent {
   constructor(props) {
@@ -36,11 +44,16 @@ export class CategoryPage extends PureComponent {
   }
 
   render() {
+    const currentProduct = [...this.props.products];
+
     return (
       <main>
         <h1>{this.state.category}</h1>
         <ul className="items_list">
           {this.state.products.map((products) => {
+            const currentAttributes = products.attributes.map((attribute) => {
+              return { name: attribute.name, value: attribute.items[0].value };
+            });
             return (
               <li key={products.id}>
                 <Link to={`/product/${products.id}`} key={products.prices}>
@@ -56,9 +69,9 @@ export class CategoryPage extends PureComponent {
                     )}
                   </div>
 
-                  <h3 style={{ opacity: `${!products.inStock ? "0.5" : "1"}` }}>
+                  <H3 inStock={products.inStock}>
                     {products.brand} {products.name}
-                  </h3>
+                  </H3>
                   <CategoryPrice
                     prices={products.prices}
                     inStock={products.inStock}
@@ -69,6 +82,34 @@ export class CategoryPage extends PureComponent {
                     src={circleIcon}
                     alt="circle-icon"
                     className="circle-icon"
+                    onClick={() => {
+                      currentProduct.some(
+                        (product) => product.id === products.id
+                      )
+                        ? currentProduct.forEach((product, index) => {
+                            if (
+                              JSON.stringify(product.attributes) ===
+                              JSON.stringify(currentAttributes)
+                            ) {
+                              currentProduct.splice(index, 1, {
+                                ...currentProduct[index],
+                                numberOfUnits:
+                                  currentProduct[index].numberOfUnits + 1,
+                              });
+                            }
+                          })
+                        : currentProduct.push({
+                            id: products.id,
+                            brand: products.brand,
+                            name: products.name,
+                            allAttributes: products.attributes,
+                            attributes: currentAttributes,
+                            gallery: products.gallery,
+                            prices: products.prices,
+                            numberOfUnits: 1,
+                          });
+                      this.props.addProductToCart(currentProduct);
+                    }}
                   ></img>
                 )}
               </li>
@@ -80,4 +121,6 @@ export class CategoryPage extends PureComponent {
   }
 }
 
-export default withRouter(CategoryPage);
+export default connect(mapStateToProps, { addProductToCart })(
+  withRouter(CategoryPage)
+);

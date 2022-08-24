@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import arrow_left from "../../images/arrow-left.svg";
+import arrow_left from "../images/arrow-left.svg";
+import { MiniImage } from "./gallerycart.styled";
 
 export class GalleryCart extends Component {
   constructor(props) {
@@ -7,7 +8,6 @@ export class GalleryCart extends Component {
     this.state = { galleryIndex: 0 };
   }
   setGallery(index, length, action) {
-    console.log(index, length);
     action === "rigth"
       ? index >= length - 1
         ? this.setState({ galleryIndex: 0 })
@@ -25,9 +25,10 @@ export class GalleryCart extends Component {
         ></img>
         {this.props?.gallery.length > 1 && (
           <div className="gallery-buttons">
-            <img
+            <MiniImage
               src={arrow_left}
               alt={arrow_left}
+              rotate={"left"}
               onClick={() =>
                 this.setGallery(
                   this.state.galleryIndex,
@@ -35,11 +36,11 @@ export class GalleryCart extends Component {
                   "left"
                 )
               }
-            ></img>
-            <img
+            ></MiniImage>
+            <MiniImage
               src={arrow_left}
               alt={arrow_left}
-              style={{ transform: `rotate(180deg)` }}
+              rotate={"rigth"}
               onClick={() =>
                 this.setGallery(
                   this.state.galleryIndex,
@@ -47,7 +48,7 @@ export class GalleryCart extends Component {
                   "rigth"
                 )
               }
-            ></img>
+            ></MiniImage>
           </div>
         )}
       </div>

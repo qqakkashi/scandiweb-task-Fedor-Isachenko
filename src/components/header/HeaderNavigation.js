@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { GET_CATEGOIES } from "../../queries/queries";
 import { client } from "../../index";
 import withRouter from "../withRouter";
 import "../../styles/header.css";
+import { NavLink } from "./headernavigation.styled";
 
 class HeaderNavigation extends Component {
   constructor(props) {
@@ -46,21 +46,13 @@ class HeaderNavigation extends Component {
         <ul>
           {this.state.categories?.map(({ name }, index) => (
             <li key={index}>
-              <Link
-                style={{
-                  color: `${
-                    name === this.state.location ? `#5ECE7B` : `#1D1F22`
-                  }`,
-                  fontWeight: `${name === this.state.location ? 600 : 400}`,
-                  borderBottom: `${
-                    name === this.state.location ? "2px solid #5ECE7B" : "none"
-                  }`,
-                }}
+              <NavLink
+                name={name}
+                location={this.state.location}
                 to={`/${name}`}
-                location={this.props.router.location.pathname}
               >
                 {name}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>

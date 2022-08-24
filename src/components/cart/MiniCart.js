@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import empty_cart from "../../images/empty-cart.svg";
+import empty_cart from "../images/empty-cart.svg";
 import { connect } from "react-redux";
 
 import MiniCartProducts from "./MiniCartProducts";
@@ -49,7 +49,6 @@ export class MiniCart extends Component {
           </div>
 
           <img
-            style={{ marginLeft: "20px" }}
             src={empty_cart}
             alt="empty-cart"
             onClick={() => this.miniCartMenu()}

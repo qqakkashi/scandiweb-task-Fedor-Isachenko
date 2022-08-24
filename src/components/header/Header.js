@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { GET_CATEGOIES_AND_CURRENCIES } from "../../queries/queries";
 import { client } from "../../index";
-import logo_icon from "../../images/logo-icon.svg";
+import logo_icon from "../images/logo-icon.svg";
 import "../../styles/header.css";
 import "../../styles/global.css";
 
@@ -37,7 +37,7 @@ export class Header extends PureComponent {
     return (
       <header>
         <HeaderNavigation />
-        <img style={{ marginLeft: "350px" }} src={logo_icon} alt="logo"></img>
+        <img className="logo" src={logo_icon} alt="logo"></img>
         <HeaderCurrency />
         <MiniCart />
       </header>

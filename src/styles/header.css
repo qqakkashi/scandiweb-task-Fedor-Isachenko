@@ -11,6 +11,9 @@ header {
   align-items: center;
   z-index: 2;
 }
+header .logo {
+  margin-left: 350px;
+}
 header nav {
   width: 240px;
   margin-left: 120px;
@@ -62,6 +65,7 @@ header .currency-menu li:hover {
 }
 header .header-cart {
   position: relative;
+  margin-left: 20px;
 }
 header .header-cart .mini-cart-items-count {
   cursor: pointer;
@@ -71,7 +75,7 @@ header .header-cart .mini-cart-items-count {
 header .header-cart .mini-cart-items-count .count-icon {
   position: absolute;
   top: -10px;
-  left: 32px;
+  left: 12px;
   width: 20px;
   height: 20px;
   background: #1d1f22;
@@ -95,7 +99,7 @@ header .header-cart .mini-cart {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 325px;
+  width: 350px;
   height: 600px;
   z-index: 4;
   top: 50px;
@@ -134,7 +138,8 @@ header .header-cart .mini-cart .mini-cart-items .mini-cart-info {
 header .header-cart .mini-cart .mini-cart-items .mini-cart-info .mini-cart-attributes {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  padding: 0px 0px 0px 5px;
 }
 header .header-cart .mini-cart .mini-cart-items .mini-cart-info .mini-cart-counter-gallery {
   display: flex;
@@ -147,7 +152,7 @@ header .header-cart .mini-cart .mini-cart-items .mini-cart-info button {
   margin-right: 8px;
 }
 header .header-cart .mini-cart .mini-cart-items .mini-cart-info p {
-  margin: 0px;
+  margin: 3px 0px;
   font-weight: 300;
   font-size: 16px;
   line-height: 160%;
