@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/scandiweb-task-Fedor-Isachenko/static/css/main.ec423ae8.css",
+    "main.js": "/scandiweb-task-Fedor-Isachenko/static/js/main.88d46c64.js",
+    "static/media/circle-icon.svg": "/scandiweb-task-Fedor-Isachenko/static/media/circle-icon.e228404ffd7c5320ec30c394d2db7a54.svg",
+    "static/media/logo-icon.svg": "/scandiweb-task-Fedor-Isachenko/static/media/logo-icon.c06a5a2f12977abf2dabceb97135f3be.svg",
+    "static/media/empty-cart.svg": "/scandiweb-task-Fedor-Isachenko/static/media/empty-cart.d19953670255792370f9fd25fc20f2ce.svg",
+    "index.html": "/scandiweb-task-Fedor-Isachenko/index.html",
+    "static/media/plus-square.svg": "/scandiweb-task-Fedor-Isachenko/static/media/plus-square.833f4b1a407e7eeb3054aafbace2b267.svg",
+    "static/media/arrow-left.svg": "/scandiweb-task-Fedor-Isachenko/static/media/arrow-left.1ca45c0b8b9ece68562c1f6be07fecdf.svg",
+    "static/media/minus-square.svg": "/scandiweb-task-Fedor-Isachenko/static/media/minus-square.7d241bfc0199dd3fba9ef2154dc0734e.svg",
+    "static/media/arrow-down.svg": "/scandiweb-task-Fedor-Isachenko/static/media/arrow-down.766d7b11f183f77a1e40c47ea18dd7ee.svg",
+    "main.ec423ae8.css.map": "/scandiweb-task-Fedor-Isachenko/static/css/main.ec423ae8.css.map",
+    "main.88d46c64.js.map": "/scandiweb-task-Fedor-Isachenko/static/js/main.88d46c64.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ec423ae8.css",
+    "static/js/main.88d46c64.js"
+  ]
+}
